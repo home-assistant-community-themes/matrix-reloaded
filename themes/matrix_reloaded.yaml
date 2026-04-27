@@ -7,8 +7,7 @@
 #
 # Revisions:
 #    1.0  2021-12-19 mrand: Covers everything I can find useful.  Published at https://github.com/mrand/matrix_reloaded/
-#
-
+#    2.0  2026-04-04 mrand: Major update after HA has started switching to webawesome
 
 Matrix_Reloaded_mediacard:
 #
@@ -37,6 +36,9 @@ Matrix_Reloaded:
 #
 #  Everything after here references above colors (well, almost)
 #
+  outline-color:               var(--disabled-text-color)
+  input-fill-color:            var(--primary-background-color)
+  disabled-color:              var(--secondary-background-color)
   ha-card-border-color:        var(--disabled-text-color)
   divider-color:               var(--disabled-text-color)
   ha-label-badge-color:        var(--disabled-text-color)
@@ -49,7 +51,7 @@ Matrix_Reloaded:
   mdc-dialog-box-shadow:       "0px 11px 15px -7px var(--primary-color), 0px 24px 38px 3px var(--primary-color), 0px 9px 46px 8px var(--primary-color)" # adds big shadows on pop-up boxes
  #
   mdc-text-field-ink-color:    var(--primary-text-color)      #
-  mdc-text-field-fill-color:   var(--disabled-text-color)     # This is the background of the light colored text fields
+  mdc-text-field-fill-color:   var(--secondary-background-color) # This is the background of the light colored text fields
   mdc-select-fill-color:       var(--mdc-text-field-fill-color)
   ha-card-box-shadow:          'inset 2px 2px 13px 0px var(--secondary-background-color)'  # --secondary-background is more subtle than -border-color
   card-background-color:       var(--secondary-background-color)
@@ -63,20 +65,19 @@ Matrix_Reloaded:
                                                                #     (including the "Refresh" text on toast, which DOES
                                                                #     have a background against toast-background)
                                                                #     and some buttons on entity pop-ups in developers tools
-  paper-toast-color:           var(--primary-background-color) # Text of the pop-up at the bottom of the screen (but NOT the button)
-  paper-toast-background-color: var(--unique-color)
-  accent-color:                 var(--unique-color)            # used randomly: background on notification dot and for dashboard editor icons, and HACS scroll bar
-  ha-picture-card-text-color:    var(--primary-text-color)
+  accent-color:                    var(--unique-color)         # used randomly: background on notification dot and for dashboard editor icons, and HACS scroll bar
+  ha-picture-card-text-color:      var(--primary-text-color)
   ha-picture-icon-button-on-color: var(--ha-picture-card-text-color)  
   app-header-background-color:      var(--primary-background-color)  # Header on dashboard. Header and footer on phone app
   app-header-edit-background-color: var(--primary-background-color)  # Header on dashboard editor
   app-header-edit-text-color:       var(--text-primary-color)
+  icon-color:                       var(--primary-text-color)
   state-icon-color:                 var(--primary-text-color)
   state-icon-active-color:          var(--selected-color)
   state-icon-unavailable-color:     var(--secondary-background-color)
   secondary-text-color:        var(--primary-text-color)
   text-primary-color:          var(--primary-text-color) # used for some text, and also tab indicator for dashboard and dev panels, and on HACS (for text of update and restart banners)
-
+  paper-dropdown-menu-color:   var(--primary-text-color)
 # slider switches
 #
   switch-checked-button-color:   var(--light-primary-color)
@@ -85,14 +86,71 @@ Matrix_Reloaded:
   switch-unchecked-track-color:  var(--switch-checked-track-color)
   codemirror-property:           var(--unique-color)
 
-  error-color: "#cc0000"  # adjust slightly for better contrast
+  error-color: var(--unique-color)  # adjust slightly for better contrast
 #
+# Lots of new variables.  Some might not be needed - need to whittle this down
+  ha-color-form-background:              var(--secondary-background-color)
+  ha-color-form-background-hover:        var(--secondary-background-color)
+  ha-color-form-background-disabled:     var(--secondary-background-color)
+  ha-color-fill-neutral-normal-hover:    var(--secondary-background-color)
+  ha-color-fill-neutral-quiet-hover:     var(--secondary-background-color)
+  ha-color-fill-danger-loud-hover:       var(--secondary-background-color)
+  ha-color-fill-primary-loud-active:     var(--secondary-background-color)
+  ha-color-fill-primary-normal-resting:  var(--disabled-text-color)
+  ha-color-fill-primary-quiet-active:    var(--secondary-background-color)
+  ha-color-fill-primary-quiet-hover:     var(--primary-background-color)
+  ha-color-fill-primary-quiet-resting:   var(--primary-background-color)
+  ha-color-fill-disabled-loud-resting:   var(--secondary-background-color)
+  ha-color-fill-disabled-normal-active:  var(--secondary-background-color)
+  ha-color-fill-disabled-normal-resting: var(--secondary-background-color)
+  ha-color-fill-danger-quiet-resting:    var(--disabled-text-color)
+  ha-color-fill-primary-loud-resting:    var(--disabled-text-color)
+  ha-color-fill-danger-normal-resting:   var(--disabled-text-color)
+  ha-color-fill-danger-normal-hover:     var(--secondary-background-color)
+  ha-color-fill-success-normal-resting:  var(--disabled-text-color)
+  ha-color-fill-success-normal-active:   var(--disabled-text-color)
+  ha-color-fill-success-normal-hover:    var(--primary-background-color)
+  ha-color-fill-success-loud-resting:  var(--disabled-text-color)
+  ha-color-fill-success-loud-active:   var(--disabled-text-color)
+  ha-color-fill-success-loud-hover:    var(--primary-background-color)
+  ha-color-on-primary-normal:          var(--primary-text-color)
+  ha-color-on-neutral-normal:          var(--primary-text-color)
+  ha-color-on-neutral-quiet:           var(--primary-text-color)  # used for icons in automation editor
+  ha-color-on-primary-loud:            var(--primary-text-color)  # needs to show up on button
+  ha-color-on-danger-quiet:            var(--unique-color)
+  ha-color-on-danger-normal:           var(--unique-color)
+  ha-color-on-danger-loud:             var(--unique-color)
+  ha-color-on-disabled-quiet:          var(--disabled-text-color)
+  ha-color-on-disabled-loud:           var(--disabled-text-color)
+  ha-color-on-disabled-normal:         var(--disabled-text-color)
+  ha-color-on-disabled:                var(--disabled-text-color)
+  ha-color-border-neutral-normal:      var(--divider-color)
+  ha-color-border-neutral-quiet:       var(--divider-color)
+  ha-color-border-neutral-loud:        var(--divider-color)
+  ha-color-surface-default:            var(--primary-background-color)
+ # automation action selection list:
+  ha-color-text-secondary:             var(--secondary-text-color)
+  ha-color-fill-neutral-loud-resting:  var(--primary-color)     # "repeat" icon on automation editor for actions
+  icon-primary-color:                  var(--secondary-color)     # other icons on automation editor for actions. Might become --md-sys-color-primary some day?
+  ha-color-fill-neutral-normal-resting: var(--primary-color)    # chip in automation editor, action for a device
+  ha-color-fill-neutral-quiet-resting: var(--primary-background-color)
+  ha-color-fill-neutral-quiet-hover:   var(--primary-background-color)
+  wa-color-brand-fill-loud:            var(--secondary-background-color) # automation add action (aka wa-color-fill-loud)
+  ha-color-fill-neutral-normal-active: var(--primary-text-color)         # aka button-color-fill-normal-active
+  ha-color-fill-primary-loud-hover:    var(--secondary-background-color) # hovering over selected "add action" tab (will this cause problems??)
+  wa-color-neutral-on-normal:          var(--primary-background-color)   # unselected tab in "add action" popup for ...
+  wa-color-neutral-fill-normal:        var(--primary-color)   #  var(--primary-text-color)  # does this work for automation editor (inverted colors)
+  ha-color-fill-neutral-normal-hover:  var(--primary-color)              # hovering over unselected tab (will this cause problems?)
+  wa-color-danger-fill-loud:           var(--disabled-text-color) # button for deleting section on a dashboard (wa-color-fill-loud)
+  md-sys-color-primary:                var(--primary-text-color) # icons for device to notify in automation blueprint
 #
 # After this point is stuff for custom cards
 #
 # Custom card(s): flip card
   dark-primary-color: var(--secondary-background-color)
-
+# mini-media-player:
+  paper-item-icon-color: var(--primary-color) #  mmp-icon-color/mini-media-player-icon-color
+  mini-media-player-accent-color: var(--primary-text-color) # --mmp-accent-color
 #
 #
 # Just for reference, example matrix color pallets:
